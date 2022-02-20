@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: php-apache
+    image: php:8.0-apache
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 8080:80
+  db:
+    container_name: db
+    image: mysql/mysql-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: MY_DATABASE
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 12345
+    ports:
+      - "9906:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8080:80'
+    restart: always
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+
+
+#docker run \
+#--detach \
+#--name=[container_name] \
+#--env="MYSQL_ROOT_PASSWORD=[my_password]" \
+#--publish 6603:3306 \
+#--volume=/root/docker/[container_name]/conf.d:/etc/mysql/conf.d \
+#mysql

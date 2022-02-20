@@ -1,0 +1,17 @@
+.services__content{
+    margin-top: 16px;
+    padding: 15px 10px;;
+    background-color: #E0E5F3;
+    height: 94.5%;
+    padding-bottom: 5px;
+}
+
+.services__content>a{
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.services__content>a:hover{
+    text-decoration: none;
+}
